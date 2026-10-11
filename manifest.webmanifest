@@ -1,0 +1,12 @@
+{
+  "name": "DropZero — Radar de Jogos Grátis",
+  "short_name": "DropZero",
+  "description": "Ofertas de jogos grátis na Steam, Epic Games Store e GOG.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090b0f",
+  "theme_color": "#090b0f",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
