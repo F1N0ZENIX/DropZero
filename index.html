@@ -17,7 +17,7 @@
 <section id="grid" class="grid"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></section><section id="empty" class="empty hidden"><h2>Nenhuma oferta encontrada</h2><p>Tente outra loja ou toque em “Mostrar todos”.</p></section>
 <section class="note"><strong>Sobre o filtro</strong><p>O DropZero prioriza títulos conhecidos e popularidade reportada pela fonte. Não inventamos notas: avaliações reais nem sempre estão disponíveis em todas as lojas. Confirme preço, idioma e prazo na loja oficial antes de resgatar.</p></section>
 <section class="sources"><a href="https://store.steampowered.com/" target="_blank" rel="noopener">Steam ↗</a><a href="https://store.epicgames.com/pt-BR/free-games" target="_blank" rel="noopener">Epic Games Store ↗</a><a href="https://www.gog.com/en/promo/free_games" target="_blank" rel="noopener">GOG ↗</a><a href="https://www.gamerpower.com/" target="_blank" rel="noopener">Fonte de ofertas: GamerPower ↗</a></section>
-</main><footer><span>DROPZERO / V0.1</span><span>Não perca o próximo resgate.</span></footer><div id="toast" class="toast" role="status"></div>
+</main><footer><span>DROPZERO / V0.2</span><span>Não perca o próximo resgate.</span></footer><div id="toast" class="toast" role="status"></div>
 <script>
 const API='https://www.gamerpower.com/api/giveaways';let games=[],store='all',showAll=false,showCollectedOnly=false;const COLLECTED_KEY='dz-collected';function gameKey(g){return String(g.id||((g.store||'')+'-'+title(g).toLowerCase()))}function collectedIds(){try{return JSON.parse(localStorage.getItem(COLLECTED_KEY)||'[]')}catch{return []}}function isCollected(g){return collectedIds().includes(gameKey(g))}
 const $=s=>document.querySelector(s);
