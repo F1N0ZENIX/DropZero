@@ -1,36 +1,66 @@
-# DropZero — Radar de Jogos Grátis
+# DropZero
 
-PWA em português para encontrar ofertas temporárias de jogos da Steam, Epic Games Store e GOG.
+**Radar de jogos grátis para PC.** Encontre ofertas temporárias da Steam, Epic Games Store e GOG em uma interface rápida, em português e instalável no Windows ou celular.
+
+[**Abrir o DropZero**](https://f1n0zenix.github.io/DropZero/) · [Código-fonte](https://github.com/F1N0ZENIX/DropZero)
+
+![Ícone do DropZero](icon.svg)
 
 ## Recursos
-- Layout responsivo para Windows e celular.
-- Filtros por loja e pesquisa por título.
-- Capas, prazo quando informado, valor original quando disponível e links para a loja.
-- Destaque heurístico para jogos conhecidos/populares.
-- Cache dos arquivos da interface e das últimas ofertas.
-- Solicitação de notificações locais no navegador.
 
-## Fonte dos dados
-As ofertas vêm da API pública de terceiros GamerPower: https://www.gamerpower.com/api/giveaways. A API pode ficar indisponível, aplicar limites, ou não listar todas as promoções. O app não inventa avaliações: notas reais e idiomas estruturados não são consistentes para todas as lojas. A contagem de usuários/resgates é apenas um sinal de popularidade.
+- **Ofertas em um só lugar:** Steam, Epic Games Store e GOG.
+- **Capas e informações:** prazo quando informado, valor original quando disponível e popularidade reportada.
+- **Busca e filtros:** filtre por loja, procure pelo nome ou veja todos os resultados.
+- **Marcação “Já coletado”:** marque jogos que já resgatou, desmarque quando quiser e filtre para ver apenas os marcados. A lista fica salva localmente neste navegador/dispositivo.
+- **Atalho da Epic:** ofertas da Epic abrem a página oficial de jogos grátis: https://store.epicgames.com/free-games
+- **PWA instalável:** interface responsiva, ícone próprio e cache básico para conexão instável.
+- **Notificações locais:** o navegador pode avisar sobre novas ofertas enquanto o app está aberto e executando.
 
-Os botões abrem uma pesquisa na loja correspondente; confirme preço, idioma, prazo e elegibilidade na página oficial antes de resgatar. Prazos e valores dependem da fonte e podem estar ausentes/desatualizados.
+## Fonte dos dados e confiabilidade
 
-## Executar localmente
-Com Python instalado, abra o terminal nesta pasta e execute:
-```bash
-python -m http.server 8080
-```
-Abra http://localhost:8080. O service worker e a instalação PWA funcionam em HTTPS ou localhost.
+As ofertas são consultadas na API pública de terceiros [GamerPower](https://www.gamerpower.com/api/giveaways). A disponibilidade, os prazos e os campos retornados dependem dessa fonte e podem mudar ou ficar temporariamente indisponíveis.
 
-## Publicar no GitHub Pages
-1. Abra Settings → Pages neste repositório.
-2. Em Build and deployment, selecione Deploy from a branch.
-3. Escolha a branch main e a pasta /(root), depois Save.
-4. Aguarde a URL HTTPS aparecer na página do Pages.
+O DropZero usa sinais de popularidade e uma lista de títulos conhecidos para ordenar destaques. **Popularidade não é uma nota de avaliação.** A API não fornece avaliações consistentes para todas as lojas, então o app não inventa notas. A indicação de português é aproximada, baseada em texto encontrado na descrição. Confirme idioma, preço, prazo e condições diretamente na loja oficial.
 
-## Instalar
-- Windows: abra o site HTTPS no Chrome/Edge e escolha Instalar este site como aplicativo.
-- Android: abra no Chrome e selecione Instalar app ou Adicionar à tela inicial.
+Os links da Steam e da GOG levam a uma pesquisa na loja. Os links da Epic levam à página oficial de jogos grátis. Uma oferta pode terminar antes da próxima atualização.
 
-## Limitações
-Notificações desta versão são verificações locais enquanto o app está aberto; o navegador pode suspender tarefas em segundo plano. Push real com o app fechado requer backend e serviço push (Web Push/FCM), assinatura e configuração HTTPS. A priorização de português é apenas indicativa, baseada em texto encontrado na descrição, não uma confirmação de idioma.
+## Executar no computador
+
+É necessário ter Python instalado.
+
+1. Baixe ou clone este repositório.
+2. Abra o terminal dentro da pasta do projeto.
+3. Execute:
+
+   ```bash
+   python -m http.server 8080
+   ```
+
+4. Abra http://localhost:8080 no navegador.
+
+O service worker e os recursos PWA funcionam em **HTTPS** ou em `localhost`; abrir o arquivo HTML diretamente não ativa todos os recursos.
+
+## Publicar com GitHub Pages
+
+1. Abra **Settings → Pages** no repositório.
+2. Em **Build and deployment**, selecione **Deploy from a branch**.
+3. Escolha a branch `main` e a pasta `/(root)`.
+4. Clique em **Save** e aguarde a publicação.
+5. A URL esperada é https://f1n0zenix.github.io/DropZero/.
+
+## Instalar como aplicativo
+
+- **Windows (Chrome/Edge):** abra o site publicado em HTTPS e escolha **Instalar este site como aplicativo** no navegador.
+- **Android (Chrome):** abra o site publicado, toque no menu e escolha **Instalar app** ou **Adicionar à tela inicial**.
+
+## Limitações conhecidas
+
+- O app depende de uma API externa e de conexão para atualizar ofertas.
+- As notificações atuais são locais e não garantem alertas com o app fechado. Push confiável em segundo plano exige backend e Web Push/FCM.
+- “Já coletado” é salvo no armazenamento local do navegador; não sincroniza entre dispositivos ou navegadores.
+- Notas de avaliação e suporte a idiomas não são uniformes na fonte de dados.
+- Verifique sempre os detalhes na página oficial antes de resgatar.
+
+## Tecnologias
+
+HTML, CSS e JavaScript sem framework; Web App Manifest; Service Worker; API GamerPower.
